@@ -2,21 +2,20 @@ package wilp.dda.vaccinationtool.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/users/")
-public class UserController {
+@RequestMapping("/vaccines/")
+public class VaccineController {
 
-    @PostMapping("/")
-    public ResponseEntity<?> saveUser() {
+    @GetMapping("/{vaccineId}")
+    public ResponseEntity<?> getVaccine() {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<?> getUser() {
+    @GetMapping("/")
+    public ResponseEntity<?> getVaccines() {
         return ResponseEntity.ok().build();
     }
 }
