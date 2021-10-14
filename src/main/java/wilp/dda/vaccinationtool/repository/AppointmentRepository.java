@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 import wilp.dda.vaccinationtool.repository.entity.AppointmentEntity;
 import wilp.dda.vaccinationtool.repository.entity.UserEntity;
 
+import java.util.List;
+
 @Repository
 public interface AppointmentRepository extends CrudRepository<AppointmentEntity, String> {
+    List<AppointmentEntity> findAllByUserId(String userId);
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import wilp.dda.vaccinationtool.service.UserService;
+import wilp.dda.vaccinationtool.web.appointment.model.AppointmentResponse;
 import wilp.dda.vaccinationtool.web.user.model.AddUserRequest;
 import wilp.dda.vaccinationtool.web.user.model.SaveUserRequest;
 import wilp.dda.vaccinationtool.web.user.model.UserResponse;
@@ -44,6 +45,18 @@ public class UserController {
     @GetMapping("/")
     public ResponseEntity<?> getUsers() {
         List<UserResponse> response = service.getUsers();
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{userId}/appointments")
+    public ResponseEntity<?> getUserAppointment(@PathVariable String userId) {
+        List<AppointmentResponse> response = service.getUserAppointments(userId);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{userId}/beneficiary")
+    public ResponseEntity<?> getUserBeneficiary(@PathVariable String userId) {
+        List<UserResponse> response = service.getUserBeneficiary(userId);
         return ResponseEntity.ok(response);
     }
 }
