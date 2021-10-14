@@ -49,14 +49,14 @@ public class UserController {
     }
 
     @GetMapping("/{userId}/appointments")
-    public ResponseEntity<?> getUserAppointment(@PathVariable String userId) {
+    public ResponseEntity<?> getUserAppointments(@PathVariable String userId) {
         List<AppointmentResponse> response = service.getUserAppointments(userId);
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/{userId}/beneficiary")
-    public ResponseEntity<?> getUserBeneficiary(@PathVariable String userId) {
-        List<UserResponse> response = service.getUserBeneficiary(userId);
+    @GetMapping("/{userId}/beneficiaries")
+    public ResponseEntity<?> getUserBeneficiaries(@PathVariable String userId) {
+        List<UserResponse> response = service.getUserBeneficiaries(userId);
         return ResponseEntity.ok(response);
     }
 }

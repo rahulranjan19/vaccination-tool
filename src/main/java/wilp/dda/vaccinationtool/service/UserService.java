@@ -49,7 +49,7 @@ public class UserService {
         return new ArrayList<>();
     }
 
-    public List<UserResponse> getUserBeneficiary(String userId) {
+    public List<UserResponse> getUserBeneficiaries(String userId) {
         userRepository.findAllByParentId(userId);
         return new ArrayList<>();
     }
