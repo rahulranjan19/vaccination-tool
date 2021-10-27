@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import wilp.dda.vaccinationtool.repository.BeneficiaryRepository;
 import wilp.dda.vaccinationtool.repository.RegisterRepository;
 import wilp.dda.vaccinationtool.repository.entity.BeneficiaryEntity;
-import wilp.dda.vaccinationtool.web.appointment.model.AppointmentResponse;
-import wilp.dda.vaccinationtool.web.user.model.AddUserRequest;
-import wilp.dda.vaccinationtool.web.user.model.SaveUserRequest;
-import wilp.dda.vaccinationtool.web.user.model.UserResponse;
+import wilp.dda.vaccinationtool.web.register.model.RegisterResponse;
+import wilp.dda.vaccinationtool.web.beneficiary.model.AddBeneficiaryRequest;
+import wilp.dda.vaccinationtool.web.beneficiary.model.SaveBeneficiaryRequest;
+import wilp.dda.vaccinationtool.web.beneficiary.model.BeneficiaryResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,31 +26,35 @@ public class BeneficiaryService {
     @Autowired
     private RegisterRepository appointmentRepository;
 
-    public void updateUser(String userId, AddUserRequest request) {
+    public void updateUser(String userId, AddBeneficiaryRequest request) {
         userRepository.findById(userId).ifPresent(user -> userRepository.save(BeneficiaryEntity.builder().build()));
     }
 
-    public void saveUser(SaveUserRequest request) {
+    public void saveUser(SaveBeneficiaryRequest request) {
         userRepository.save(BeneficiaryEntity.builder().build());
     }
 
-    public UserResponse getUser(String userId) {
+    public BeneficiaryResponse getUser(String userId) {
         Optional<BeneficiaryEntity> userEntityOpt = userRepository.findById(userId);
-        return UserResponse.builder().build();
+        return BeneficiaryResponse.builder().build();
     }
 
-    public List<UserResponse> getUsers() {
+    public List<BeneficiaryResponse> getUsers() {
         Iterable<BeneficiaryEntity> users = userRepository.findAll();
         return new ArrayList<>();
     }
 
-    public List<AppointmentResponse> getUserAppointments(String userId) {
+    public List<RegisterResponse> getUserAppointments(String userId) {
 //        appointmentRepository.findAllByUserId(userId);
         return new ArrayList<>();
     }
 
-    public List<UserResponse> getUserBeneficiaries(String userId) {
+    public List<BeneficiaryResponse> getUserBeneficiaries(String userId) {
 //        userRepository.findAllByUserid(userId);
         return new ArrayList<>();
+    }
+
+    public List<BeneficiaryResponse> getBeneficiaries(String userId) {
+        return null;
     }
 }

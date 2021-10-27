@@ -4,9 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import wilp.dda.vaccinationtool.repository.RegisterRepository;
 import wilp.dda.vaccinationtool.repository.entity.RegisterEntity;
-import wilp.dda.vaccinationtool.web.appointment.model.AppointmentResponse;
-import wilp.dda.vaccinationtool.web.appointment.model.BookAppointmentRequest;
-import wilp.dda.vaccinationtool.web.appointment.model.UpdateAppointmentRequest;
+import wilp.dda.vaccinationtool.web.register.model.RegisterResponse;
+import wilp.dda.vaccinationtool.web.register.model.RegisterRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ public class RegisterService {
     @Autowired
     private RegisterRepository repository;
 
-    public void bookAppointment(BookAppointmentRequest request) {
+    public void bookAppointment(RegisterRequest request) {
         repository.save(RegisterEntity.builder().build());
     }
 
@@ -30,7 +29,7 @@ public class RegisterService {
 //        return AppointmentResponse.builder().build();
 //    }
 
-    public List<AppointmentResponse> getAppointment() {
+    public List<RegisterResponse> getAppointment() {
         repository.findAll();
         return new ArrayList<>();
     }
