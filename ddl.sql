@@ -1,20 +1,21 @@
 CREATE TABLE IF NOT EXISTS beneficiary (
-    mobile_number character varying(255) NOT NULL,
-    userid character varying(255),
-    id character varying(255),
+    bid character varying(255) NOT NULL,
+    parentid character varying(255),
+    signedup character varying(255),
+    govid character varying(255),
+    govidtype character varying(255),
     dob timestamp,
     pwd character varying(255),
     fname character varying(255),
     mname character varying(255),
     lname character varying(255),
     gender character varying(255),
-    muserid character varying(255),
     add1 character varying(255),
     add2 character varying(255),
     city character varying(255),
     state character varying(255),
     pincode int4,
-    primary key (mobile_number)
+    primary key (bid)
 );
 
 CREATE TABLE IF NOT EXISTS center (
@@ -44,7 +45,7 @@ CREATE TABLE IF NOT EXISTS register (
     date timestamp,
     dosage int4,
     primary key (bid, vaccineid),
-    CONSTRAINT mobile_number_fkey FOREIGN KEY(bid) REFERENCES beneficiary(mobile_number) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE CASCADE,
+    CONSTRAINT bid_fkey FOREIGN KEY(bid) REFERENCES beneficiary(bid) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE CASCADE,
     CONSTRAINT centerid_fkey FOREIGN KEY(centerid) REFERENCES center(centerid) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE CASCADE,
     CONSTRAINT vaccineid_fkey FOREIGN KEY(vaccineid) REFERENCES vaccine(vaccineid) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE CASCADE
 );

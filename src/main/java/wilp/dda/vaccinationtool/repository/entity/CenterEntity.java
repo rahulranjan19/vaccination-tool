@@ -2,16 +2,20 @@ package wilp.dda.vaccinationtool.repository.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
@@ -19,7 +23,9 @@ import java.util.Set;
 @Table(name = "center")
 @NoArgsConstructor
 @AllArgsConstructor
-public class CenterEntity {
+@Getter
+@Setter
+public class CenterEntity  implements Serializable {
 
     @Column
     private String name;
@@ -42,7 +48,7 @@ public class CenterEntity {
     @Column
     private Integer pincode;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "center_vaccine",
             joinColumns = {@JoinColumn(name = "centerid")},

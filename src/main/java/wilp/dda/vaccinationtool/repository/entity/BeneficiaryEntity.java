@@ -2,30 +2,39 @@ package wilp.dda.vaccinationtool.repository.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.sql.Timestamp;
+import java.io.Serializable;
+import java.time.Instant;
+import java.util.Set;
 
 @Entity
 @Builder
 @Table(name = "beneficiary")
 @NoArgsConstructor
 @AllArgsConstructor
-public class BeneficiaryEntity {
+@Getter
+@Setter
+public class BeneficiaryEntity implements Serializable {
 
     @Id
-    @Column(name="mobile_number")
-    private String mobileNumber;
+    @Column
+    private String bid;
 
     @Column
-    private Timestamp dob;
+    private Instant dob;
 
     @Column
-    private String userid;
+    private String signedup;
 
     @Column
     private String pwd;
@@ -43,10 +52,17 @@ public class BeneficiaryEntity {
     private String gender;
 
     @Column
-    private String id;
+    private String govid;
 
     @Column
-    private String muserid;
+    private String govidtype;
+
+    @Column
+    private String parentid;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "parentid")
+    private Set<BeneficiaryEntity> beneficiaries;
 
     @Column
     private String add1;
@@ -62,4 +78,7 @@ public class BeneficiaryEntity {
 
     @Column
     private Integer pincode;
+
+    @OneToMany(mappedBy = "beneficiary", fetch = FetchType.EAGER)
+    private Set<RegisterEntity> registrations;
 }

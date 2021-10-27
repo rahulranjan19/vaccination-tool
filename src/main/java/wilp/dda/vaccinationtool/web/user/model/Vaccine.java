@@ -1,4 +1,4 @@
-package wilp.dda.vaccinationtool.web.vaccine.model;
+package wilp.dda.vaccinationtool.web.user.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,14 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class VaccineResponse {
+@Builder
+public class Vaccine {
+
     private String name;
 
     private String vaccineid;
@@ -21,6 +20,4 @@ public class VaccineResponse {
     private String manufacturer;
 
     private Double cost;
-
-    private Set<Center> centers;
 }

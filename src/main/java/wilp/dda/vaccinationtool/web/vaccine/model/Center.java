@@ -6,21 +6,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class VaccineResponse {
+public class Center {
+
     private String name;
 
-    private String vaccineid;
+    private String centerid;
 
-    private String manufacturer;
+    private String address1;
 
-    private Double cost;
+    private String address2;
 
-    private Set<Center> centers;
+    private String city;
+
+    private String state;
+
+    private Integer pincode;
 }
