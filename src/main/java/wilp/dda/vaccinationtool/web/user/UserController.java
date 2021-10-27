@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import wilp.dda.vaccinationtool.service.UserService;
+import wilp.dda.vaccinationtool.service.BeneficiaryService;
 import wilp.dda.vaccinationtool.web.appointment.model.AppointmentResponse;
+import wilp.dda.vaccinationtool.web.appointment.model.UpdateAppointmentRequest;
 import wilp.dda.vaccinationtool.web.user.model.AddUserRequest;
 import wilp.dda.vaccinationtool.web.user.model.SaveUserRequest;
 import wilp.dda.vaccinationtool.web.user.model.UserResponse;
@@ -22,7 +23,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService service;
+    private BeneficiaryService service;
 
     @PostMapping("/")
     public ResponseEntity<?> saveUser(@RequestBody SaveUserRequest request) {
@@ -59,4 +60,16 @@ public class UserController {
         List<UserResponse> response = service.getUserBeneficiaries(userId);
         return ResponseEntity.ok(response);
     }
+
+//    @PutMapping("/{userId}/appointments/{appointment}")
+//    public ResponseEntity<?> updateAppointment(@PathVariable String registrationId, @RequestBody UpdateAppointmentRequest request) {
+//        service.updateAppointment(registrationId, request);
+//        return ResponseEntity.ok().build();
+//    }
+//
+//    @GetMapping("/{userId}/appointments/{appointment}")
+//    public ResponseEntity<?> getAppointment(@PathVariable String registrationId) {
+//        AppointmentResponse appointment = service.getAppointment(registrationId);
+//        return ResponseEntity.ok(appointment);
+//    }
 }

@@ -3,9 +3,9 @@ package wilp.dda.vaccinationtool.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import wilp.dda.vaccinationtool.repository.AppointmentRepository;
-import wilp.dda.vaccinationtool.repository.UserRepository;
-import wilp.dda.vaccinationtool.repository.entity.UserEntity;
+import wilp.dda.vaccinationtool.repository.BeneficiaryRepository;
+import wilp.dda.vaccinationtool.repository.RegisterRepository;
+import wilp.dda.vaccinationtool.repository.entity.BeneficiaryEntity;
 import wilp.dda.vaccinationtool.web.appointment.model.AppointmentResponse;
 import wilp.dda.vaccinationtool.web.user.model.AddUserRequest;
 import wilp.dda.vaccinationtool.web.user.model.SaveUserRequest;
@@ -18,39 +18,39 @@ import java.util.Optional;
 
 @Slf4j
 @Service
-public class UserService {
+public class BeneficiaryService {
 
     @Autowired
-    private UserRepository userRepository;
+    private BeneficiaryRepository userRepository;
 
     @Autowired
-    private AppointmentRepository appointmentRepository;
+    private RegisterRepository appointmentRepository;
 
     public void updateUser(String userId, AddUserRequest request) {
-        userRepository.findById(userId).ifPresent(user -> userRepository.save(UserEntity.builder().build()));
+        userRepository.findById(userId).ifPresent(user -> userRepository.save(BeneficiaryEntity.builder().build()));
     }
 
     public void saveUser(SaveUserRequest request) {
-        userRepository.save(UserEntity.builder().build());
+        userRepository.save(BeneficiaryEntity.builder().build());
     }
 
     public UserResponse getUser(String userId) {
-        Optional<UserEntity> userEntityOpt = userRepository.findById(userId);
+        Optional<BeneficiaryEntity> userEntityOpt = userRepository.findById(userId);
         return UserResponse.builder().build();
     }
 
     public List<UserResponse> getUsers() {
-        Iterable<UserEntity> users = userRepository.findAll();
+        Iterable<BeneficiaryEntity> users = userRepository.findAll();
         return new ArrayList<>();
     }
 
     public List<AppointmentResponse> getUserAppointments(String userId) {
-        appointmentRepository.findAllByUserId(userId);
+//        appointmentRepository.findAllByUserId(userId);
         return new ArrayList<>();
     }
 
     public List<UserResponse> getUserBeneficiaries(String userId) {
-        userRepository.findAllByParentId(userId);
+//        userRepository.findAllByUserid(userId);
         return new ArrayList<>();
     }
 }
