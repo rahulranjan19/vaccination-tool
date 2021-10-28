@@ -14,9 +14,11 @@ This application will provide you basic functionality to manage and book vaccina
       1. `CREATE ROLE sa WITH LOGIN PASSWORD 'password';`
       2. `ALTER ROLE sa CREATEDB;`
       3. Create DB tables by running file from `ddl.sql`
-      4. ```GRANT ALL ON TABLE public.center TO sa;
-         GRANT ALL ON TABLE public.center_vaccine TO sa;
-         GRANT ALL ON TABLE public.register TO sa;
+      4. ```
+         GRANT ALL ON TABLE public.beneficiary TO sa; 
+         GRANT ALL ON TABLE public.center TO sa; 
+         GRANT ALL ON TABLE public.center_vaccine TO sa; 
+         GRANT ALL ON TABLE public.register TO sa; 
          GRANT ALL ON TABLE public.vaccine TO sa;
       5. Add dummy values in `center` and `vaccine` tables manually
       
