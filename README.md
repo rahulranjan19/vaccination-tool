@@ -3,7 +3,7 @@
 
 This is a part of DBMS Assignment
 
-This application will provide you basic functionality to manage and book vaccinations through UI interface
+The application will provide you basic functionality to manage and book vaccinations through UI interface
 
 ***
 
