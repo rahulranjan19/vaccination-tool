@@ -19,13 +19,13 @@ public class CenterController {
     private CenterService service;
 
     @GetMapping("/{centerId}")
-    public ResponseEntity<?> getVaccine(@PathVariable String centerId) {
+    public ResponseEntity<?> getCenter(@PathVariable String centerId) {
         CenterResponse response = service.getCenter(centerId);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/")
-    public ResponseEntity<?> getVaccines() {
+    public ResponseEntity<?> getCenters() {
         List<CenterResponse> responses = service.getAllCenters();
         return ResponseEntity.ok(responses);
     }
