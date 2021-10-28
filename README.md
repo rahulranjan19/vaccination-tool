@@ -23,3 +23,4 @@ This application will provide you basic functionality to manage and book vaccina
 
 2. Compile this application with `mvn clean install`
 3. Run the application by Springboot main method in `VaccinationToolApplication`
+4. Hit `localhost:8080/swagger-ui.html` in browser to see swagger ui.
